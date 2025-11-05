@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-
+import Navbar from './components/Navbar';
+import { BrowserRouter } from "react-router-dom"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      
-    </>
+    <BrowserRouter>
+      <div>
+        <Navbar />
+      </div>
+    </BrowserRouter>
   )
 }
 
