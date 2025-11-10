@@ -2,9 +2,9 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx}",  // Look for .jsx files
   ],
-  darkMode: 'class', // Enable dark mode with class strategy
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {

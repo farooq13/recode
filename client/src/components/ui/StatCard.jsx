@@ -8,7 +8,7 @@ export default function StatCard({
     iconColor = 'bg-primary-500' // Default color
 }) {
     return (
-        <div className='bg-white rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700'>
+        <div className='bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700'>
            {/* Card content container */}
            <div className="flex items-center justify-between">
                 {/* Left side: Text content */}
@@ -28,13 +28,13 @@ export default function StatCard({
                         trend && (
                             <div className="mt-2 flex items-center gap-1">
                                 {/* Arrow indicator - points up for positive, down for negative */}
-                                <span className={trend.isPositive ? 'text-success-500' : 'text-red-500'}>
+                                <span className={trend.isPositive ? 'text-green-500' : 'text-red-500'}>
                                     {trend.isPositive ? '↑' : '↓'}
                                 </span>
 
                                 {/* Percentage value */}
                                 <span className={`text-sm font-medium ${
-                                    trend.isPositive ? 'text-success-500' : 'text-red-500'
+                                    trend.isPositive ? 'text-green-500' : 'text-red-500'
                                 }`}>
                                     {trend.value}
                                 </span>
