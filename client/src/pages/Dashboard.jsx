@@ -11,27 +11,27 @@ export default function Dashboard() {
       value: 24,
       icon: FileCode,
       trend: { value: 12, isPositive: true },
-      iconColor: 'bg-blue-500'
+      // iconColor: 'bg-blue-500'
     },
     {
       title: 'Approved',
       value: 18,
       icon: CheckCircle,
       trend: { value: 8, isPositive: true },
-      iconColor: 'bg-green-500'
+      // iconColor: 'bg-green-500'
     },
     {
       title: 'Pending',
       value: 6,
       icon: Clock,
       trend: { value: 3, isPositive: false },
-      iconColor: 'bg-yellow-500'
+      // iconColor: 'bg-yellow-500'
     },
     {
       title: 'Team Members',
       value: 12,
       icon: Users,
-      iconColor: 'bg-purple-500'
+      // iconColor: 'bg-purple-500'
     },
   ];
 
