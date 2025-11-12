@@ -1,18 +1,16 @@
+import ThemeProvider from './context/ThemeContext';
 import Dashboard from './pages/Dashboard';
-import Home from './pages/Home';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Header from './components/layout/Header';
 
 
 function App() {
   return (
-    <Router>
-        <div>
-          <Routes>
-             <Route path='/' element={<Home />} />
-             <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
+    <ThemeProvider>
+        <div className='app min-h-screen bg-gray-50 dark:bg-[#121212] transition-colors duration-300'>
+          {/* Header */}
+          <Header />
         </div>
-    </Router>
+    </ThemeProvider>
   )
 }
 

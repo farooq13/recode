@@ -1,15 +1,9 @@
 import { createContext, useContext, useState, useEffect, Children } from "react";
 
 
-/* 
-  create a container that can hold data
-  and share it with any component
-*/
 const ThemeContext = createContext();
 
-/* ThemeProvider: wraps entire app and provides theme state to all Children
-   Manages theme switchin and localStorage persistence
-*/
+
 export default function ThemeProvider({ children }) {
   // Check localStorage for saved theme preference
   const [theme, setTheme] = useState(() => {
@@ -30,6 +24,15 @@ export default function ThemeProvider({ children }) {
       root.classList.add('light');
       root.classList.remove('dark');
     }
+
+    
+    try {
+      document.body.style.transition = 'background-color 300ms ease';
+      document.body.style.backgroundColor = theme === 'dark' ? '#121212' : '#f8fafc';
+    } catch (err) {
+      
+      console.debug('Could not set body background color', err);
+    }
   }, [theme])
   
 
@@ -42,7 +45,7 @@ export default function ThemeProvider({ children }) {
   const value = {
     theme,       // Current theme
     toggleTheme,
-    isDark: theme === 'dark' ,
+    isDark: theme === 'dark',
   };
 
   return (
@@ -56,7 +59,6 @@ export default function ThemeProvider({ children }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
 
-  // Error handling: make sure hook is used inside ThemeProvider
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
