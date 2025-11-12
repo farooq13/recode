@@ -1,7 +1,7 @@
 # Recode
 
 <div align="center">
-  <img src="./client/src/assets/recode-logo-white.png" alt="Recode Logo" width="200"/>
+  <!-- <img src="./client/src/assets/recode-logo-white.png" alt="Recode Logo" width="200"/> -->
   
   **Collaborative Code Review Platform with AI-Powered Analysis**
   
@@ -62,8 +62,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/farooq13/recode.git
-cd recode
+git clone https://github.com/farooq13/mergecode.git
+cd mergecode
 
 # Install dependencies
 npm install
