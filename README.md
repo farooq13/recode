@@ -1,4 +1,4 @@
-# Recode
+# Mergecode
 
 <div align="center">
   <!-- <img src="./client/src/assets/recode-logo-white.png" alt="Recode Logo" width="200"/> -->
@@ -23,7 +23,7 @@
 
 ## Overview
 
-**Recode** is a modern, collaborative code review platform designed to streamline the development workflow. It combines AI-powered code analysis with real-time team collaboration, helping developers write better code through constructive feedback and automated insights.
+**Mergecode** is a modern, collaborative code review platform designed to streamline the development workflow. It combines AI-powered code analysis with real-time team collaboration, helping developers write better code through constructive feedback and automated insights.
 
 ---
 
