@@ -1,11 +1,11 @@
 import { Archive, Clock, MessageSquare, User } from 'lucide-react';
 import StatusBadge from '../ui/StatusBadge';
+import { useTheme } from '../../context/ThemeContext';
 
 
 export default function ReviewCard({ review, onClick }) {
-  /**
-   * Converts a date to a human-readable format
-   */
+  const { isDark } = useTheme();
+  // Converts a date to a human-readable format
   const formatTimeAgo = (date) => {
     const now = new Date();
     const diffInMs = now.getTime() - new Date(date).getTime(); // current time in millisecond
@@ -36,16 +36,14 @@ export default function ReviewCard({ review, onClick }) {
     <div
       onClick={onClick}
       className={`
-        bg-white dark:bg-gray-800 rounded-lg shadow-sm p-5 
-        border border-gray-200 dark:border-gray-700
-        transition-all duration-200
+        ${isDark ? 'bg-[#121212] rounded-lg shadow-sm p-5 border border-gray-700 transition-all duration-200' : 'bg-white transition-all duration-200 border-gray-200 rounded-lg shadow-sm p-5 border'}
         ${onClick ? 'cursor-pointer hover:shadow-md hover:border-primary-500' : ''}
       `}
     >
       {/* HEADER: Title and Status Badge */}
       <div className="flex items-start justify-between gap-4 mb-3">
         {/* Title - truncate if too long */}
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-1">
+        <h3 className={`${isDark ? 'text-lg font-semibold text-white line-clamp-1' : 'text-lg font-semibold text-gray-900 line-clamp-1'}`}>
           {review.title}
         </h3>
 
@@ -56,7 +54,7 @@ export default function ReviewCard({ review, onClick }) {
       </div>
 
       {/* METADATA ROW: Author, Language, Time */}
-      <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+      <div className={`${isDark ? 'flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400' : 'flex items-center gap-4 text-sm text-gray-600'}`}>
         {/* Author */}
         <div className="flex items-center gap-1.5">
           <User size={16} />
@@ -64,7 +62,7 @@ export default function ReviewCard({ review, onClick }) {
         </div>
 
         {/* Language Badge */}
-        <div className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 rounded text-xs font-medium">
+        <div className={`{${isDark ? 'px-4 py-0.5 bg-gray-700 rounded text-xs font-medium' : 'px-4 py-0.5 bg-gray-700 rounded text-xs text-white font-medium'}`}>
           {review.language}
         </div>
 
