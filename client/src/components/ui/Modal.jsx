@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import { useEffect } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 
 /* Modal Component - A reusable modal dialog that overlays the page
@@ -15,6 +16,8 @@ export default function Modal({
   size = 'md',
   showCloseButton = true
 }) {
+
+  const { isDark } = useTheme();
 
   // Different max-widths for different modal sizes
   const sizeStyles = {
@@ -71,15 +74,13 @@ export default function Modal({
         <div className="flex min-h-full items-center justify-center p-4">
           {/* Modal Content */}
           <div className={`
-              relative w-full ${sizeStyles[size]}
-              bg-white dark:bg-[#1e1e1e]
-              rounded-lg shadow-xl
-              transform transition-all
-            `}
+              ${isDark ? 'relative w-full bg-[#1e1e1e] rounded-lg shadow-xl transform transition-all' : 'relative w-full  rounded-lg shadow-xl transform transition-all bg-white'}
+              ${sizeStyles[size]}
+              `}
             >
             {/* Modal Header */}
-            <div className="flex items-center justity-between p-6 border-b border-gray-200 dark:border-[#2a2a2a]">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+            <div className={`${isDark ? 'flex items-center justity-between p-6 border-b border-[#2a2a2a]' : 'border-gray-200 flex items-center justity-between p-6 border-b' }`}>
+              <h2 className={`${isDark ? 'text-xl font-semibold text-white' : 'text-xl font-semibold text-gray-900' }`}>
                 {title}
               </h2>
 

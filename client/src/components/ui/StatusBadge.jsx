@@ -8,10 +8,10 @@ export default function StatusBadge({ variant, children }) {
  */
   const variantStyles = {
     draft: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    approved: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'changes-requested': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-    merged: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    pending: 'bg-yellow-100 text-yellow-800 dark:bg-[#FFC50F] dark:text-yellow-900',
+    approved: 'bg-green-100 text-green-800 dark:bg-[#043915] dark:text-green-500',
+    'changes-requested': 'bg-orange-100 text-orange-800 dark:bg-[#FF6C0C] dark:text-orange-900',
+    merged: 'bg-purple-100 text-purple-800 dark:bg-[#540863] dark:text-purple-300',
     archived: 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200',
   };
 

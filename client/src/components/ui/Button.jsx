@@ -13,11 +13,11 @@ export default function Button({
 
   // Different color scheme for different button types
     const variantStyles = {
-    primary: 'bg-primary-600 text-white hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600',
-    secondary: 'bg-gray-600 text-white hover:bg-gray-700 dark:bg-gray-500 dark:hover:bg-gray-600',
-    outline: 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-900/20',
-    ghost: 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800',
-    danger: 'bg-red-600 text-white hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600',
+    primary: 'bg-primary-600 text-white hover:cursor-pointer hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600',
+    secondary: 'bg-gray-600 text-white hover:cursor-pointer hover:bg-gray-700 dark:bg-gray-500 dark:hover:bg-gray-600',
+    outline: 'border-2 border-primary-600 text-primary-600 hover:cursor-pointer hover:bg-primary-50 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-900/20',
+    ghost: 'text-gray-700 hover:cursor-pointer hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800',
+    danger: 'bg-red-600 text-white hover:cursor-pointer hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600',
   };
 
   // Different padding and font sizes

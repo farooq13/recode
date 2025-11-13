@@ -1,66 +1,69 @@
-import { FileCode, CheckCircle, Clock, Users } from 'lucide-react';
+import { FileCode, CheckCircle, Clock, Users, Plus } from 'lucide-react';
+import { useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
 import StatCard from '../components/ui/StatCard';
 import ReviewCard from '../components/features/ReviewCard';
+import SubmissionForm from '../components/features/SubmissionForm';
+import Button from '../components/ui/Button';
 
-/* Dashboard Component */
+
 export default function Dashboard() {
-  /** SAMPLE DATA **/
+  const [showSubmissionForm, setShowSubmissionForm] = useState(false);
+  const { isDark } = useTheme();
+
+  // Sample Data
   const stats = [
     {
       title: 'Total Reviews',
       value: 24,
       icon: FileCode,
       trend: { value: 12, isPositive: true },
-      // iconColor: 'bg-blue-500'
     },
     {
       title: 'Approved',
       value: 18,
       icon: CheckCircle,
       trend: { value: 8, isPositive: true },
-      // iconColor: 'bg-green-500'
     },
     {
       title: 'Pending',
       value: 6,
       icon: Clock,
       trend: { value: 3, isPositive: false },
-      // iconColor: 'bg-yellow-500'
     },
     {
       title: 'Team Members',
       value: 12,
       icon: Users,
-      // iconColor: 'bg-purple-500'
     },
   ];
 
-  const recentReviews = [
+  const [reviews, setReviews] = useState([
     {
       id: '1',
       title: 'Refactor authentication middleware',
-      author: 'Sarah Chen',
+      author: 'Faruk Idris',
       status: 'pending',
       language: 'TypeScript',
-      createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+      createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000), 
       commentCount: 3,
     },
     {
       id: '2',
       title: 'Add user profile API endpoints',
-      author: 'Mike Johnson',
+      author: 'Adam Muhammad',
       status: 'approved',
       language: 'Python',
-      createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
+      createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000), 
       commentCount: 7,
     },
     {
       id: '3',
       title: 'Fix responsive layout issues on mobile',
-      author: 'Emily Rodriguez',
+      author: 'Muhammad Kabeer',
       status: 'changes-requested',
       language: 'JavaScript',
-      createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), // 1 day ago
+      createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), 
       commentCount: 12,
     },
     {
@@ -69,34 +72,36 @@ export default function Dashboard() {
       author: 'David Kim',
       status: 'merged',
       language: 'Go',
-      createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+      createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), 
       commentCount: 5,
     },
-  ];
+  ]);
+
+  const handleNewReview = (newReview) => {
+    setReviews(prev => [newReview, ...prev]);
+    console.log('New review added:', newReview);
+  }
+
+  const recentReviews = reviews.slice(0,4); // Show only first 4 reviews
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#121212]">
-      {/* 
-        HEADER SECTION 
-        Contains the page title and description
-      */}
-      <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* Page title */}
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Dashboard
-          </h1>
-          
-          {/* Subtitle/description */}
-          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            Welcome back! Here's what's happening with your code reviews.
-          </p>
-        </div>
-      </header>
-
+    <div className={`min-h-screen ${isDark ? 'bg-[#121212]' : 'bg-gray-50'}`}>
+      
       {/* MAIN CONTENT SECTION */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
+        {/* New Review Button - Floating Action */}
+        <div className="flex justify-end mb-6">
+          <Button
+            variant='primary'
+            icon={Plus}
+            onClick={() => setShowSubmissionForm(true)}
+            className={`${isDark ? '' : 'bg-[#121212]'}`}
+          >
+            New Review
+          </Button>
+        </div>
+
         {/* METRICS GRID*/}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
        
@@ -145,6 +150,13 @@ export default function Dashboard() {
           )}
         </div>
       </main>
+
+      {/* Submission Form - only shows when showSubmissionForm is true */}
+      <SubmissionForm 
+        isOpen={showSubmissionForm}
+        onClose={() => setShowSubmissionForm(false)}
+        onSubmit={handleNewReview}
+      />
     </div>
   );
 }

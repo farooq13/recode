@@ -30,13 +30,14 @@ export default function ThemeProvider({ children }) {
       document.body.style.transition = 'background-color 300ms ease';
       document.body.style.backgroundColor = theme === 'dark' ? '#121212' : '#f8fafc';
     } catch (err) {
-      
       console.debug('Could not set body background color', err);
     }
   }, [theme])
   
 
   const toggleTheme = () => {
+    // eslint-disable-next-line no-console
+    console.debug('[ThemeProvider] toggleTheme called');
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
